@@ -16,11 +16,11 @@ namespace LineCalculator.Backend.MathObjects.Points
         /// <summary>
         /// x coordinate
         /// </summary>
-        private double x { get; }
+        private double X;
         /// <summary>
         /// y coordiante
         /// </summary>
-        private double y { get; }
+        private double Y;
 
         #endregion PrivateFields
 
@@ -32,9 +32,22 @@ namespace LineCalculator.Backend.MathObjects.Points
         /// <param name="y"> y coordinate</param>
         public Point(double x, double y)
         {
-            this.x = x;
-            this.y = y;
+            this.X = x;
+            this.Y = y;
         }
         #endregion Constructor
+
+        #region Getters
+        public double GetX()
+        {
+            return this.X;
+        }
+
+        public double GetY()
+        {
+            return this.Y;
+        }
+        #endregion Getters
+
     }
 }

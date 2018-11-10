@@ -1,4 +1,5 @@
-﻿using LineCalculator.Backend.MathObjects.Points;
+﻿using LineCalculator.Backend.MathObjects.Equation;
+using LineCalculator.Backend.MathObjects.Points;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -8,6 +9,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using Point = LineCalculator.Backend.MathObjects.Points.Point;
 
 namespace LineCalculator
 {
@@ -19,7 +21,7 @@ namespace LineCalculator
         /// <summary>
         /// List of points
         /// </summary>
-        private PointList points;
+        private PointList Points;
 
         public LineFormGUI()
         {
@@ -28,12 +30,27 @@ namespace LineCalculator
 
         public void LineFormGUI_Load(object sender, System.EventArgs e)
         {
-            points = new PointList();
+            Points = new PointList();
         }
 
         private void BtnParse_Click(object sender, EventArgs e)
         {
+            LinearEquation eq = new LinearEquation(TxtEqn.Text);
 
+            Points.Clear();
+            LstPoint.Items.Clear();
+            //Points.Add(new Point(1, 0));
+
+            //stack overflow
+            for (int i = 0; i < 100; i++)
+            {
+                Points.Add(eq.Eval(i));
+            }
+
+            foreach (Point p in Points)
+            {
+                LstPoint.Items.Add(p.GetX() + "1t\t" + p.GetY());
+            }
         }
     }
 }

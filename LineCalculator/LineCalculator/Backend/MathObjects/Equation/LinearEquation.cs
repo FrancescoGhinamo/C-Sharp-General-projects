@@ -1,4 +1,5 @@
-﻿using System;
+﻿using LineCalculator.Backend.MathObjects.Points;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -15,11 +16,11 @@ namespace LineCalculator.Backend.MathObjects.Equation
         /// <summary>
         /// m coefficent of the equation
         /// </summary>
-        private double m { get; }
+        private double M { get; }
         /// <summary>
         /// q coeffficent of the equation
         /// </summary>
-        private double q { get; }
+        private double Q { get; }
 
         #endregion PrivateFields
 
@@ -33,23 +34,30 @@ namespace LineCalculator.Backend.MathObjects.Equation
             eqn.ToLower();
             try
             {
-                m = Double.Parse(eqn.Substring(eqn.IndexOf('=') + 1, eqn.IndexOf('x') - eqn.IndexOf('=') - 1));
+                M = Double.Parse(eqn.Substring(eqn.IndexOf('=') + 1, eqn.IndexOf('x') - eqn.IndexOf('=') - 1));
             }
             catch (Exception)
             {
-                m = 1;
+                M = 1;
             }
 
             try
             {
-                q = Double.Parse(eqn.Substring(eqn.IndexOf('x') + 1));
+                Q = Double.Parse(eqn.Substring(eqn.IndexOf('x') + 1));
             }
             catch (Exception)
             {
-                q = 0;
+                Q = 0;
             }
         }
 
         #endregion Constructor
+
+        #region MathMethods
+        public Point Eval(double x)
+        {
+            return new Point(x, M * x + Q);
+        }
+        #endregion MathMethods
     }
 }
