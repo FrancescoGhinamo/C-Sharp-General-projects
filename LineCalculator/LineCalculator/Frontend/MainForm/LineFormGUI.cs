@@ -36,7 +36,7 @@ namespace LineCalculator
         private void BtnParse_Click(object sender, EventArgs e)
         {
             LinearEquation eq = new LinearEquation(TxtEqn.Text);
-
+            
             Points.Clear();
             LstPoint.Items.Clear();
             //Points.Add(new Point(1, 0));
@@ -49,8 +49,9 @@ namespace LineCalculator
 
             foreach (Point p in Points)
             {
-                LstPoint.Items.Add(p.GetX() + "1t\t" + p.GetY());
+                LstPoint.Items.Add(p.GetX().ToString() + "\t\t" + p.GetY().ToString());
             }
+            
         }
     }
 }

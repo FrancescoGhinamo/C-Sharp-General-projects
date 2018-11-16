@@ -19,7 +19,7 @@ namespace LineCalculator.Backend.MathObjects.Points
         {
             if(p != null)
             {
-                this.Add(p);
+                base.Add(p);
             }
             
         }
